@@ -4,6 +4,7 @@ package com.pluralsight.order.util;
  * Enum that represents the commands of the application
  */
 public enum Commands {
+
     GET("get"),
     UPDATE("update"),
     DELETE("delete"),
