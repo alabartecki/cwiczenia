@@ -27,10 +27,12 @@ class Bazka {
             // Dla innej bazy postgres na hoscie lokalnym 127.0.0.1 port 5432 uzytkownik sa haslo sa
 //             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/test", "sa","sa");
             stmt = conn.createStatement();
+//            stmt.executeUpdate("drop table  rodzina");
             //tworzy tabele
-//            stmt.executeUpdate("CREATE  table rodzina( ID int,  FirstName varchar(255), LastName varchar(255))");
-//            stmt.executeUpdate("INSERT into rodzina (id,firstName,lastName) values (3,'mirek','bartecki')");
+            stmt.executeUpdate("CREATE  table if not exists rodzina( ID int auto_increment,  FirstName varchar(255),  CONSTRAINT m_rodzina UNIQUE (FirstName), LastName varchar(255))");
+            stmt.executeUpdate("INSERT into rodzina (firstName,lastName) values ('mirmek','bartecki')");
 //            stmt.executeUpdate("DELETE from rodzina where id=1");
+//            stmt.executeUpdate(" rodzina ")
 
             rs = stmt.executeQuery("SELECT * FROM rodzina");
             while (rs.next()) {
